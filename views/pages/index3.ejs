@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <%- include('../partials/head'); %>
+</head>
+
+<body class="container">
+
+    <header>
+        <%- include('../partials/header'); %>
+    </header>
+    <main>
+        <div class="jumbotron">
+            <h1>Top Productos</h1>
+            <table id="myTable">
+                <thead>
+                    <tr>
+                        <strong>
+                                <th>N°</th>
+                                <th>Nombre</th>
+                                <th>Correo</th>
+                                <th>Télefono</th>
+
+                        </strong>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% let cont = 0; %>
+                    <% clientes.forEach(function(cliente) { %>
+                        <% cont+=1 %>
+                        <tr>
+                            <td><%- cont %></td>
+                            <td><%- cliente.nombre %></td>
+                            <td><%- cliente.email %></td>
+                            <td><%- cliente.telefono %></td>
+                        </tr>
+                        <% }); %>
+                </tbody>
+            </table>
+        </div>
+        <button>&plus; Ver Más</button>
+    </main>
+
+<footer>
+    <%- include('../partials/footer'); %>
+</footer>
+
+<style>
+    .jumbotron {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        border: 4px solid rgba(0,0,0,0.5);
+        border-radius: 20px !important;
+        box-shadow: -10px 10px 30px 10px rgba(0,0,0,0.5);
+        margin-top: 20px;
+        margin-bottom: 40px;
+        transition: transform 0.2s ease;
+        padding: 20px;
+
+        table {
+            width: 100%;
+        }
+    }
+
+    .jumbotron:hover {
+        transform: translateY(-2px);
+    }
+
+    .jumbotron table {
+        text-align: center;
+    }
+
+    button {
+        padding: 0;
+        background-color: rgb(195, 11, 195);
+        color: #f3f3f3;
+        font-weight: bold;
+        border: none;
+        border-radius: 10px;
+        width: 10vh;
+        height: 4vh;
+        transition: color 0.5s ease, background-color 0.2s ease, transform 0.2s ease;
+        display: flex;
+        flex-direction: column;
+        justify-self: center;
+        justify-content: center;
+        box-shadow: -5px 5px 30px 5px rgba(195,11,195,0.6); 
+    }
+    button:focus {
+        outline: none;
+    }
+    button:hover {
+        background-color: rgb(135, 10, 135)
+    }
+    button:active {
+        transform: translateY(-5px);
+    }
+
+    footer {
+        margin-top: 40px;
+    }
+</style>
+
+<script>
+    new DataTable('#myTable');
+</script>
+
+</body>
+</html>
