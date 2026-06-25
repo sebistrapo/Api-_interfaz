@@ -13,7 +13,7 @@
     <main>
         <div class="jumbotron">
             <h1>Top Clientes</h1>
-            <table id="myTable" class="table table-hover">
+            <table id="myTable" class="table table-hover table table-striped">
                 <thead>
                     <tr>
                         <strong>
@@ -80,17 +80,34 @@
     .jumbotron table .btn {
         background-color: #b3b1c0;
         color: #000;
+        transition: transform .2s ease;
+    }
+
+    .jumbotron table .btn:active {
+        background-color: #eee;
+        transform: translateY(-2px);
     }
     .jumbotron table {
         .btn-1:hover {
             color: yellow;
         }
+        .btn-1:active {
+            color: orange;
+        }
         .btn-2:hover {
             color: greenyellow;
+        }
+        .btn-2:active {
+            color: green;
         }
         .btn-3:hover {
             color: red;
         }
+    }
+
+    #dt-search-0:focus, #dt-length-0:focus {
+        box-shadow: -1px 1px 20px 1px rgba(140, 140, 140, 0.5) !important;
+        border: .5px solid #555;
     }
 
     footer {
