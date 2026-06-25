@@ -11,6 +11,9 @@ app.use(express.urlencoded({extended:false}));
 app.set('view engine', 'ejs');
 
 
+app.get('/', clienteController.inicio);
+app.get('/cliente-form', clienteController.clienteForm);
+
 app.get('/clientes', clienteController.listar);
 app.get('/cliente/:telefono', clienteController.buscar);
 app.post('/clientes', clienteController.insertar);

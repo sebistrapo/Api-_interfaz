@@ -1,5 +1,21 @@
 const modeloCliente = require('../models/cliente.model');
 
+exports.inicio = async (req, res) => {
+    try {
+        res.render('pages/inicio');
+    } catch {
+        console.log("Error");
+    }
+}
+
+exports.clienteForm = async (req, res) => {
+    try {
+    res.render('pages/cliente-form');
+    } catch {
+        console.log("Error");
+    }
+}
+
 exports.listar = async (req, res) => {
     try {
         const clientes = await modeloCliente.find();
@@ -13,6 +29,7 @@ exports.listar = async (req, res) => {
 
 exports.buscar = async (req, res) => {
     try {
+
         const clientes = await modeloCliente.findOne(
             { "telefono": req.params.telefono }
         );
