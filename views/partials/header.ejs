@@ -1,10 +1,8 @@
-<a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-    Acciones
-</a>
-<ul class="dropdown-menu">
-    <li><a class="dropdown-item" href="/api/v1/clientes">Ver Clientes</a></li>
-    <li><a class="dropdown-item" href="/api/v1/cliente-form">Buscar Cliente</a></li>
-</ul>
+<nav class="navbar">
+    <a href="/" class="git navbar-brand">Git<span class="hub">Hub</span></a>
+    <li class="nav-item"><a class="nav nav-link active" href="/api/v1/clientes">Ver Clientes</a></li>
+</nav>
+
 
 <style>
     .dropdown-toggle {
@@ -23,5 +21,27 @@
         display: flex;
         align-items: center;
         padding-left: 20px;
+    }
+
+    .git {
+        color: #f3f3f3;
+        text-decoration: none;
+        font-size: 2rem;
+        margin-right: 20px;
+        font-weight: bold;
+    }
+    .hub {
+        color: #000;
+        background-color: orange;
+        border-radius: 5px;
+        padding: 2px;
+    }
+
+    .nav {
+        color: #f3f3f3;
+        font-size: 1.3rem;
+    }
+    .nav:hover {
+        color: #ddd;
     }
 </style>
