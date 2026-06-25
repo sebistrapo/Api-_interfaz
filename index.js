@@ -4,22 +4,15 @@ const servicioControl = require('./controllers/servicio.controller');
 
 
 const app = express();
+const enrutamiento = require('./routes/enrutamiento.router');
+app.use('/api/v1', enrutamiento);
 
 
 app.use(express.json());
 app.use(express.urlencoded({extended:false}));
 app.set('view engine', 'ejs');
 
-
 app.get('/', clienteController.inicio);
-app.get('/cliente-form', clienteController.clienteForm);
-
-app.get('/clientes', clienteController.listar);
-app.get('/cliente/:telefono', clienteController.buscar);
-app.post('/clientes', clienteController.insertar);
-app.put('/clientes/:telefono', clienteController.update);
-app.delete('/clientes/:telefono', clienteController.eliminar);
-
 
 app.get('/servicios', servicioControl.listar);
 app.get('/servicios/:nombre', servicioControl.buscar);       

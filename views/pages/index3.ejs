@@ -21,6 +21,7 @@
                                 <th>Nombre</th>
                                 <th>Correo</th>
                                 <th>Télefono</th>
+                                <th>Acciones</th>
 
                         </strong>
                     </tr>
@@ -34,6 +35,11 @@
                             <td><%- cliente.nombre %></td>
                             <td><%- cliente.email %></td>
                             <td><%- cliente.telefono %></td>
+                            <td>
+                                <button type="button" class="btn btn-1">Detalles</button>
+                                <button type="button" class="btn btn-2">Editar</button>
+                                <button type="button" class="btn btn-3">Eliminar</button>
+                            </td>
                         </tr>
                         <% }); %>
                 </tbody>
@@ -69,6 +75,22 @@
 
     .jumbotron table {
         text-align: center;
+    }
+
+    .jumbotron table .btn {
+        background-color: #b3b1c0;
+        color: #000;
+    }
+    .jumbotron table {
+        .btn-1:hover {
+            color: yellow;
+        }
+        .btn-2:hover {
+            color: greenyellow;
+        }
+        .btn-3:hover {
+            color: red;
+        }
     }
 
     footer {
