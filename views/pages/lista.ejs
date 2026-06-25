@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <%- include('../partials/head'); %>
+</head>
+
+<body class="container">
+
+    <header>
+        <%- include('../partials/header'); %>
+    </header>
+    <main>
+        <div class="jumbotron">
+            <h1>Clientes</h1>
+            <table id="myTable" class="table table-hover table table-striped">
+                <thead>
+                    <tr>
+                        <strong>
+                                <th>N°</th>
+                                <th>Nombre</th>
+                                <th>Correo</th>
+                                <th>Teléfono</th>
+                                <th>Acciones</th>
+
+                        </strong>
+                    </tr>
+                </thead>
+                <tbody class="table-group-divider">
+                    <% let cont = 0; %>
+                    <% clientes.forEach(function(cliente, index) { %>
+                        <% cont+=1 %>
+                        <tr>
+                            <td><%- cont %></td>
+                            <td><%- cliente.nombre %></td>
+                            <td><%- cliente.email %></td>
+                            <td><%- cliente.telefono %></td>
+                            <td>
+                                <button type="button" class="btn btn-1" data-bs-toggle='modal' data-bs-target='#ModalDetalles<%- cliente.telefono %>'>Detalles</button>
+                                <button type="button" class="btn btn-2" data-bs-toggle='modal' data-bs-target='#ModalEditar<%- cliente.telefono %>'>Editar</button>
+                                <button type="" class="btn btn-3" href="/api/v1/clientes/<%- cliente.telefono %>">Eliminar</button>
+                            </td>
+                            <div class="modal fade" id="ModalDetalles<%- cliente.telefono %>" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+                                aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                                <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h1 class="modal-title fs-5" id="staticBackdropLabel">Datos de <%- cliente.nombre %></h1>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <ul>
+                                                <li>Correo: <%- cliente.email %></li>
+                                                <li>Telefono: <%- cliente.telefono %></li>
+                                            </ul>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Close</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="modal fade" id="ModalEditar<%- cliente.telefono %>" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+                                aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                                <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h1 class="modal-title fs-5" id="staticBackdropLabel">Editando a <%- cliente.nombre %></h1>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <form action='/clientes/:telefono' method='POST'>
+                                                <input type="text" name="nombre" value="<%- cliente.nombre %>">
+                                                <input type="email" name="email" value='<%- cliente.email %>'>
+                                                <input type="number" name="telefono" value='<%- cliente.telefono %>'>
+                                            </form>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Close</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </tr>
+                            
+                    <% }); %>
+                </tbody>
+            </table>
+        </div>
+    </main>
+
+
+<footer>
+    <%- include('../partials/footer'); %>
+</footer>
+
+
+<style>
+    .jumbotron {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        border: none;
+        border-radius: 20px !important;
+        box-shadow: -5px 5px 20px 2px rgba(0,0,0,0.5);
+        margin-top: 20px;
+        margin-bottom: 40px;
+        transition: transform 0.2s ease;
+        padding: 20px;
+
+        table {
+            width: 100%;
+        }
+    }
+
+    .jumbotron:hover {
+        transform: translateY(-2px);
+    }
+
+    .jumbotron table {
+        text-align: center;
+    }
+
+    .jumbotron table .btn {
+        background-color: #b3b1c0;
+        color: #000;
+        transition: transform .2s ease;
+    }
+
+    .jumbotron table .btn:active {
+        background-color: #eee;
+        transform: translateY(-2px);
+    }
+    .jumbotron table {
+        .btn-1:hover {
+            color: yellow;
+        }
+        .btn-1:active {
+            color: orange;
+        }
+        .btn-2:hover {
+            color: greenyellow;
+        }
+        .btn-2:active {
+            color: green;
+        }
+        .btn-3:hover {
+            color: red;
+        }
+    }
+
+    #dt-search-0:focus, #dt-length-0:focus {
+        box-shadow: -1px 1px 20px 1px rgba(140, 140, 140, 0.5) !important;
+        border: .5px solid #555;
+    }
+
+    footer {
+        margin-top: 40px;
+    }
+    #myTable_wrapper {
+        width: 100%;
+    }
+
+</style>
+
+<script>
+    new DataTable('#myTable');
+</script>
+
+</body>
+</html>

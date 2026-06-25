@@ -3,14 +3,19 @@ const clienteController = require('./controllers/cliente.controller');
 const servicioControl = require('./controllers/servicio.controller');
 
 
+
+
+
 const app = express();
+
+app.set('view engine', 'ejs');
+app.use(express.json());
+app.use(express.urlencoded({extended:false}));
 const enrutamiento = require('./routes/enrutamiento.router');
 app.use('/api/v1', enrutamiento);
 
 
-app.use(express.json());
-app.use(express.urlencoded({extended:false}));
-app.set('view engine', 'ejs');
+
 
 app.get('/', clienteController.inicio);
 

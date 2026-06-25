@@ -20,7 +20,7 @@ exports.listar = async (req, res) => {
     try {
         const clientes = await modeloCliente.find();
 
-        res.render('pages/index3', {clientes:clientes});
+        res.render('pages/lista', {clientes:clientes});
 
     } catch (error) {
         res.status(500).json({ error: error.message });
@@ -44,21 +44,20 @@ exports.buscar = async (req, res) => {
 }
 
 exports.insertar = async (req, res) => {
-    console.log('entra')
+    console.log("Entra");
     try {
-        let servicioNuevo = {
+        let clienteNuevo = {
            nombre: req.body.nombre,
-           descripcion: req.body.descripcion,
-           duracionMinutos: req.body.duracionMinutos,
-           precio: req.body.precio,
-           categoria: req.body.categoria,
-           activo: req.body.activo,
-           imagen: req.body.imagen
+           email: req.body.email,
+           telefono: req.body.telefono
        };
+
        console.log(clienteNuevo);
-        const clientes = await modeloCliente.insertOne(servicioNuevo);
+       
+        const clientes = await modeloCliente.insertOne(clienteNuevo);
 
         res.json(clientes);
+        res.render('pages/lista');
     } catch (error) {
         res.status(500).json({ error: error.message });
     }
@@ -68,12 +67,8 @@ exports.update = async (req, res) => {
     try {
         let servicioActualizado = {
            nombre: req.body.nombre,
-           descripcion: req.body.descripcion,
-           duracionMinutos: req.body.duracionMinutos,
-           precio: req.body.precio,
-           categoria: req.body.categoria,
-           activo: req.body.activo,
-           imagen: req.body.imagen
+           email: req.body.email,
+           telefono: req.body.telefono
        };
 
 
@@ -90,9 +85,10 @@ exports.update = async (req, res) => {
 
 exports.eliminar = async (req, res) => {
     try {
-        const servicio = await modeloCliente.findOneAndDelete({ nombre: req.params.nombre});
+        const cliente = await modeloCliente.findOneAndDelete({ telefono: req.params.telefono});
 
-        res.json(servicio);
+        res.json(cliente);
+        res.render('pages/lista');
     } catch (error) {
         res.status(500).json({ error: error.message });
     }

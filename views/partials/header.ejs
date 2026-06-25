@@ -1,13 +1,21 @@
 <nav class="navbar">
     <a href="/" class="git navbar-brand">Git<span class="hub">Hub</span></a>
-    <li class="nav-item"><a class="nav nav-link active" href="/api/v1/clientes">Ver Clientes</a></li>
+    <li class="nav-item dropdown">
+        <a href="#" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Clientes
+        </a>
+        <ul class="dropdown-menu">
+            <li class="nav-item"><a class="dropdown-item" href="/api/v1/clientes">Ver Clientes</a></li>
+            <li class="nav-item"><a class="dropdown-item" href="/api/v1/cliente-form">Registrar Cliente</a></li>
+        </ul>
+    </li>
 </nav>
 
 
 <style>
     .dropdown-toggle {
         color: #f3f3f3;
-        font-size: 2.5rem;
+        font-size: 1.7rem;
     }
     .dropdown-toggle:hover {
         color: #fff !important;
@@ -29,6 +37,9 @@
         font-size: 2rem;
         margin-right: 20px;
         font-weight: bold;
+    }
+    .git:hover {
+        color: #f3f3f3;
     }
     .hub {
         color: #000;
