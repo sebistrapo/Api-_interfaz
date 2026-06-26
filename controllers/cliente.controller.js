@@ -65,19 +65,19 @@ exports.insertar = async (req, res) => {
 
 exports.update = async (req, res) => {
     try {
-        let servicioActualizado = {
+        let clienteActualizado = {
            nombre: req.body.nombre,
            email: req.body.email,
            telefono: req.body.telefono
        };
 
 
-        const servicio = await modeloCliente.updateOne(
+        const cliente = await modeloCliente.updateOne(
             { "nombre": req.params.nombre },
-            { $set:servicioActualizado }
+            { $set:clienteActualizado }
         );
 
-        res.json(servicio);
+        res.json(cliente);
     } catch (error) {
         res.status(500).json({ error: error.message });
     }
